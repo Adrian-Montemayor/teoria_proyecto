@@ -183,18 +183,23 @@ namespace Teorioa
                         break;
                 
                 case 3:
-                  
-       
+                    if (Stop3 == true)
+                    {
+                        MessageBox.Show("Se llego al limite de Marcadores");
+                    }
+                    else
+                    {
                         ContadorInicial++;
                         marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.blue);
                         markeroverlay.Markers.Add(marker);
                         marker.ToolTipMode = MarkerTooltipMode.Always;
                         DictionaryPointLTLn.Add(lat, lng);
-                    
-                  
+
+
+                    }
                     break;
                 case 4:
-                    if (Stop3 == true)
+                    if (Stop4 == true)
                     {
                         MessageBox.Show("Se llego al limite de Marcadores");
                     }
@@ -211,7 +216,7 @@ namespace Teorioa
                     
                     break;
                 case 5:
-                    if (Stop4 == true)
+                    if (Stop5 == true)
                     {
                         MessageBox.Show("Se llego al limite de Marcadores");
                     }
@@ -226,7 +231,7 @@ namespace Teorioa
                   
                     break;
                 case 6:
-                    if (Stop5 == true)
+                    if (Stop6 == true)
                     {
                         MessageBox.Show("Se llego al limite de Marcadores");
                     }
@@ -241,21 +246,6 @@ namespace Teorioa
                     
                     break;
                 case 7:
-                    if (Stop6 == true)
-                    {
-                        MessageBox.Show("Se llego al limite de Marcadores");
-                    }
-                    else
-                    {
-                        ContadorInicial++;
-                        marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.blue);
-                        markeroverlay.Markers.Add(marker);
-                        marker.ToolTipMode = MarkerTooltipMode.Always;
-                        DictionaryPointLTLn.Add(lat, lng);
-                    }
-                   
-                    break;
-                case 8:
                     if (Stop7 == true)
                     {
                         MessageBox.Show("Se llego al limite de Marcadores");
@@ -270,7 +260,7 @@ namespace Teorioa
                     }
                    
                     break;
-                case 9:
+                case 8:
                     if (Stop8 == true)
                     {
                         MessageBox.Show("Se llego al limite de Marcadores");
@@ -278,13 +268,24 @@ namespace Teorioa
                     else
                     {
                         ContadorInicial++;
+                        marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.blue);
+                        markeroverlay.Markers.Add(marker);
+                        marker.ToolTipMode = MarkerTooltipMode.Always;
+                        DictionaryPointLTLn.Add(lat, lng);
+                    }
+                   
+                    break;
+                case 9:
+                   
+                    
+                        ContadorInicial++;
                         marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.red);
                         markeroverlay.Markers.Add(marker);
                         marker.ToolTipMode = MarkerTooltipMode.Always;
                         DictionaryPointLTLn.Add(lat, lng);
 
                         MarcarLineal(DictionaryPointLTLn);
-                    }
+                    
                   
                     break;
                    
