@@ -78,7 +78,7 @@ namespace Teorioa
             gMapControl1.AutoScroll = true;
 
             markeroverlay = new GMapOverlay("Marcador");
-            marker = new GMarkerGoogle(new PointLatLng(LatIn, longIn), new Bitmap(@"C:\Users\jose_\OneDrive\Documentos\Visual Studio 2015\Projects\Teorioa\Teorioa\1477907324_vector_66_13.png"));
+            marker = new GMarkerGoogle(new PointLatLng(LatIn, longIn), GMarkerGoogleType.brown_small);
             markeroverlay.Markers.Add(marker); //Agregamos al marcador.
 
            // marker.ToolTipMode = MarkerTooltipMode.Always; //Siempre se muestra el marcador
