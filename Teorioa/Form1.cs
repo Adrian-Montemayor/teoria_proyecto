@@ -183,7 +183,10 @@ namespace Teorioa
                 case 3:
                     if (Stop2 == true)
                     {
-                        MessageBox.Show("Pedritos");
+
+
+                        MessageBox.Show("ESTO ES UN CAMBIOssss");
+
                     }
                     else
                     {
