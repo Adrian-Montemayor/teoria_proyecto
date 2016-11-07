@@ -183,7 +183,7 @@ namespace Teorioa
                 case 3:
                     if (Stop2 == true)
                     {
-                        MessageBox.Show("Se llego al maximo de marcadores");
+                        MessageBox.Show("Se llego al maximo de MARCADORES PAPU");
                     }
                     else
                     {
