@@ -183,7 +183,7 @@ namespace Teorioa
                 case 3:
                     if (Stop2 == true)
                     {
-                        MessageBox.Show("Se llego al maximo de MARCADORES PAPU");
+                        MessageBox.Show("Se acaba de realizar un cambio");
                     }
                     else
                     {
