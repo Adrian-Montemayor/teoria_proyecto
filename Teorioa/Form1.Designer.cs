@@ -51,7 +51,7 @@
             this.gMapControl1.GrayScaleMode = false;
             this.gMapControl1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.gMapControl1.LevelsKeepInMemmory = 5;
-            this.gMapControl1.Location = new System.Drawing.Point(351, 12);
+            this.gMapControl1.Location = new System.Drawing.Point(345, -1);
             this.gMapControl1.MarkersEnabled = true;
             this.gMapControl1.MaxZoom = 2;
             this.gMapControl1.MinZoom = 2;
@@ -64,7 +64,7 @@
             this.gMapControl1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapControl1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl1.ShowTileGridLines = false;
-            this.gMapControl1.Size = new System.Drawing.Size(824, 552);
+            this.gMapControl1.Size = new System.Drawing.Size(830, 565);
             this.gMapControl1.TabIndex = 0;
             this.gMapControl1.Zoom = 0D;
             this.gMapControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseDoubleClick);
@@ -74,16 +74,15 @@
             this.button1.BackColor = System.Drawing.Color.LimeGreen;
             this.button1.Location = new System.Drawing.Point(5, 33);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(340, 24);
+            this.button1.Size = new System.Drawing.Size(166, 37);
             this.button1.TabIndex = 5;
-            this.button1.Text = "Iniciar";
+            this.button1.Text = "Marcar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // timer1
             // 
             this.timer1.Interval = 5000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // timer2
             // 
@@ -140,6 +139,7 @@
             // 
             // CantidadCMB
             // 
+            this.CantidadCMB.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.CantidadCMB.FormattingEnabled = true;
             this.CantidadCMB.Items.AddRange(new object[] {
             "3",
@@ -154,6 +154,8 @@
             this.CantidadCMB.Name = "CantidadCMB";
             this.CantidadCMB.Size = new System.Drawing.Size(65, 21);
             this.CantidadCMB.TabIndex = 12;
+            this.CantidadCMB.SelectedIndexChanged += new System.EventHandler(this.CantidadCMB_SelectedIndexChanged);
+            this.CantidadCMB.SelectedValueChanged += new System.EventHandler(this.CantidadCMB_SelectedValueChanged);
             // 
             // Form1
             // 

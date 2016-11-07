@@ -28,44 +28,23 @@ namespace Teorioa
         //marcador de rutas
         bool trazarRuta;
         int ContadorInicial = 0;
-        PointLatLng inicio,PA,PB,PC,PD,PE,PF,PG,PH,final;
         Dictionary<double, double> DictionaryPointLTLn = new Dictionary<double, double>();
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Random r = new Random();
-            int num = r.Next(19, 32);
-
-            Random r2 = new Random();
-            int nums = r.Next(89, 103);
-
-            double latsec = num + .7188232818747;
-            double longsec = -+nums + .30414581298828;
-
-            const string input = "generando Bytes";
-            byte[] array = Encoding.ASCII.GetBytes(input);
-            //Siempre se muestra el marcador
-
-            marker.ToolTipText = Convert.ToString("DFG$^%^UYHR@#D") + array.Length;
-            gMapControl1.Overlays.Add(markeroverlay);
-
-
-            List<PointLatLng> points = new List<PointLatLng>();
-            foreach (var item in DictionaryPointLTLn)
+            MarcarLineal(DictionaryPointLTLn);
+            if (CantidadCMB.Text == "")
             {
-                points.Add(new PointLatLng(item.Key, item.Value));
-                GMapRoute route = new GMapRoute(points, "A walk in the park");
-                route.Stroke = new Pen(Color.Red, 3);
-                markeroverlay.Routes.Add(route);
-            }
-            
-            
-            gMapControl1.Overlays.Add(markeroverlay);
+                MessageBox.Show("Falta seleccionar la cantidad de puntos a marcar",
+                 "Important Note",
+                 MessageBoxButtons.OK,
+                 MessageBoxIcon.Exclamation,
+                 MessageBoxDefaultButton.Button1);
 
+            }
         }
 
-        string Colores;
-
+ 
         public Form1()
         {
             InitializeComponent();
@@ -76,11 +55,21 @@ namespace Teorioa
 
         }
 
+        private void CantidadCMB_SelectedValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void CantidadCMB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+            CantidadCMB.SelectedIndex = 0;
             gMapControl1.DragButton = MouseButtons.Left;
-            gMapControl1.CanDragMap = true;
+            gMapControl1.CanDragMap = false;
             gMapControl1.MapProvider = GMapProviders.GoogleMap;
             gMapControl1.Position = new PointLatLng(LatIn, longIn);
             gMapControl1.MinZoom = 0;
@@ -92,45 +81,17 @@ namespace Teorioa
             marker = new GMarkerGoogle(new PointLatLng(LatIn, longIn), new Bitmap(@"C:\Users\jose_\OneDrive\Documentos\Visual Studio 2015\Projects\Teorioa\Teorioa\1477907324_vector_66_13.png"));
             markeroverlay.Markers.Add(marker); //Agregamos al marcador.
 
-            marker.ToolTipMode = MarkerTooltipMode.Always; //Siempre se muestra el marcador
-            marker.ToolTipText = "Servidor"; // agrego el texto
+           // marker.ToolTipMode = MarkerTooltipMode.Always; //Siempre se muestra el marcador
+           ///marker.ToolTipText = "Servidor"; // agrego el texto
 
-            //agregor el mapa y el marcador al map control
+            ////agregor el mapa y el marcador al map control
             gMapControl1.Overlays.Add(markeroverlay);
           
 
         }
 
       
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            Random r = new Random();
-            int num = r.Next(19, 32);
-
-            Random r2 = new Random();
-            int nums = r.Next(89, 103);
-
-            double latsec = num + .7188232818747;
-            double longsec = -+nums + .30414581298828;
-
-            const string input = "generando Bytes";
-            byte[] array = Encoding.ASCII.GetBytes(input);
-             //Siempre se muestra el marcador
-            
-            marker.ToolTipText = Convert.ToString("DFG$^%^UYHR@#D") + array.Length;
-            gMapControl1.Overlays.Add(markeroverlay);
-
-
-            List<PointLatLng> points = new List<PointLatLng>();
-            points.Add(new PointLatLng(LatIn, longIn));
-            points.Add(new PointLatLng(latsec, longsec));
-
-            GMapRoute route = new GMapRoute(points, "A walk in the park");
-            route.Stroke = new Pen(Color.Red, 3);
-            markeroverlay.Routes.Add(route);
-            gMapControl1.Overlays.Add(markeroverlay);
-
-        }
+        
 
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -144,6 +105,7 @@ namespace Teorioa
             double lon = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lng;
             //Paso los parametros segun sea el caso Maximo 10 clics
             TrazarDireccionRuta(lat, lon,4);
+            CantidadCMB.Enabled = false;
             
         }
 
