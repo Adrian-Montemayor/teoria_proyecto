@@ -185,7 +185,7 @@ namespace Teorioa
                     {
 
 
-                        MessageBox.Show("ESTO ES UN CAMBIOssss");
+                        MessageBox.Show("No es posible marcar mas ubicaciones", "Atencion");
 
                     }
                     else
