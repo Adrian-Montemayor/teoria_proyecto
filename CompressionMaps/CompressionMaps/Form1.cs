@@ -29,6 +29,8 @@ namespace CompressionMaps
 
         int u = 2;
 
+        Dictionary<double, double> Diccionario_Cordenadas = new Dictionary<double, double>();
+
         public Form1()
         {
             InitializeComponent();
@@ -112,6 +114,9 @@ namespace CompressionMaps
             // Se obtiene los datos de lat y lng del mapa donde el usuario presionó
             double lat = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lat;
             double lng = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lng;
+
+            //Agrego la latitud y longitud al diccionario
+            Diccionario_Cordenadas.Add(lat, lng);
 
             //*****************************************************************************************
             if(contador == 1) {
@@ -305,6 +310,71 @@ namespace CompressionMaps
         private void gMapControl1_OnMarkerEnter(GMapMarker item)
         {
 
+        }
+
+        public void DistanciaEuclideana(Dictionary<double,double> Distancias)
+        {
+            Double LatIn;
+            Double lonIn;
+            Double R1;
+            Double R2;
+            Double DistanciaEuclideana;
+            Double KM;
+            int count = 0;
+            foreach (var item in Distancias)
+            {
+                LatIn = item.Key;
+                lonIn = item.Value;
+
+                foreach (var item2 in Distancias)
+                {
+                    count++;
+                    if (count > 1)
+                    {
+                        R1 = item2.Key - LatIn ;
+                        R2 = item2.Value - lonIn;
+                        DistanciaEuclideana = Math.Pow(2, R1) - Math.Pow(2, R2);
+                        KM = Math.Sqrt(DistanciaEuclideana / 2) * 157.4;
+                        MessageBox.Show("Distancia Euclideana: "+ KM);
+                    }
+                }
+            }
+        }
+
+        public void DistanciaEnKm(Dictionary<double, double> Distancias)
+        {
+            Double RadianesInLt, Radianeslt;
+            Double RadianeslnLn,Radianesln;
+            Double SumLat,sumLong;
+            double a,b,c;
+
+            foreach (var item in Distancias)
+            {
+                RadianesInLt = item.Key * (Math.PI / 180);
+                RadianeslnLn = item.Value * (Math.PI / 180);
+                foreach (var latlng in Distancias)
+                {
+                    Radianeslt = latlng.Key * (Math.PI / 180);
+                    Radianesln = latlng.Value * (Math.PI / 180);
+
+                    SumLat = Radianeslt - RadianesInLt;
+                    sumLong = Radianesln - RadianeslnLn;
+
+                    a = Math.Pow(2, Math.Sin(SumLat) / 2) + Math.Cos(RadianesInLt) * Math.Cos(Radianeslt) * Math.Pow(2, Math.Sin(sumLong) / 2);
+                    b = a * Math.Tan(2 * Math.Sqrt(a) - Math.Sqrt(1 - a));
+                    c = 2 * b;
+
+
+
+                }
+            }
+           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DistanciaEnKm(Diccionario_Cordenadas);
+            DistanciaEuclideana(Diccionario_Cordenadas);
         }
     }
 }

@@ -9,3 +9,14 @@ c:\users\jose_\onedrive\documentos\visual studio 2015\Projects\Teorioa\Teorioa\o
 c:\users\jose_\onedrive\documentos\visual studio 2015\Projects\Teorioa\Teorioa\obj\Debug\Teorioa.csproj.GenerateResource.Cache
 c:\users\jose_\onedrive\documentos\visual studio 2015\Projects\Teorioa\Teorioa\obj\Debug\Teorioa.exe
 c:\users\jose_\onedrive\documentos\visual studio 2015\Projects\Teorioa\Teorioa\obj\Debug\Teorioa.pdb
+C:\TeoriaGit\teoria_proyecto\Teorioa\bin\Debug\Teorioa.exe.config
+C:\TeoriaGit\teoria_proyecto\Teorioa\obj\Debug\Teorioa.exe
+C:\TeoriaGit\teoria_proyecto\Teorioa\obj\Debug\Teorioa.pdb
+C:\TeoriaGit\teoria_proyecto\Teorioa\bin\Debug\Teorioa.exe
+C:\TeoriaGit\teoria_proyecto\Teorioa\bin\Debug\Teorioa.pdb
+C:\TeoriaGit\teoria_proyecto\Teorioa\bin\Debug\GMap.NET.Core.xml
+C:\TeoriaGit\teoria_proyecto\Teorioa\bin\Debug\GMap.NET.WindowsForms.xml
+C:\TeoriaGit\teoria_proyecto\Teorioa\obj\Debug\Teorioa.csprojResolveAssemblyReference.cache
+C:\TeoriaGit\teoria_proyecto\Teorioa\obj\Debug\Teorioa.Form1.resources
+C:\TeoriaGit\teoria_proyecto\Teorioa\obj\Debug\Teorioa.Properties.Resources.resources
+C:\TeoriaGit\teoria_proyecto\Teorioa\obj\Debug\Teorioa.csproj.GenerateResource.Cache

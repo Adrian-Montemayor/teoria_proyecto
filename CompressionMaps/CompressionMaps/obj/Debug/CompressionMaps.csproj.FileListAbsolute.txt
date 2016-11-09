@@ -14,3 +14,19 @@ c:\users\daniel arriaga\documents\visual studio 2015\Projects\CompressionMaps\Co
 c:\users\daniel arriaga\documents\visual studio 2015\Projects\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.csproj.GenerateResource.Cache
 c:\users\daniel arriaga\documents\visual studio 2015\Projects\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.exe
 c:\users\daniel arriaga\documents\visual studio 2015\Projects\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.pdb
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\CompressionMaps.exe.config
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.exe
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.pdb
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\CompressionMaps.exe
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\CompressionMaps.pdb
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\AjaxMin.dll
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\GMap.NET.Core.dll
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\Gmap.net.dll
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\GMap.NET.WindowsForms.dll
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\Gmap.net.pdb
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\GMap.NET.Core.xml
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\GMap.NET.WindowsForms.xml
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.csprojResolveAssemblyReference.cache
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.Form1.resources
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.Properties.Resources.resources
+C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.csproj.GenerateResource.Cache
