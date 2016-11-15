@@ -347,26 +347,38 @@ namespace CompressionMaps
             Double RadianeslnLn,Radianesln;
             Double SumLat,sumLong;
             double a,b,c;
+            int count = 0;
 
             foreach (var item in Distancias)
             {
                 RadianesInLt = item.Key * (Math.PI / 180);
                 RadianeslnLn = item.Value * (Math.PI / 180);
-                foreach (var latlng in Distancias)
-                {
-                    Radianeslt = latlng.Key * (Math.PI / 180);
-                    Radianesln = latlng.Value * (Math.PI / 180);
 
-                    SumLat = Radianeslt - RadianesInLt;
-                    sumLong = Radianesln - RadianeslnLn;
+                 
 
-                    a = Math.Pow(2, Math.Sin(SumLat) / 2) + Math.Cos(RadianesInLt) * Math.Cos(Radianeslt) * Math.Pow(2, Math.Sin(sumLong) / 2);
-                    b = a * Math.Tan(2 * Math.Sqrt(a) - Math.Sqrt(1 - a));
-                    c = 2 * b;
+               
+                    foreach (var latlng in Distancias)
+                    {
+                    count++;
+                    if (count > 1)
+                    {
+                        Radianeslt = latlng.Key * (Math.PI / 180);
+                        Radianesln = latlng.Value * (Math.PI / 180);
+
+                        SumLat = Radianeslt - RadianesInLt;
+                        sumLong = Radianesln - RadianeslnLn;
+
+                        a = Math.Pow(2, Math.Sin(SumLat) / 2) + Math.Cos(RadianesInLt) * Math.Cos(Radianeslt) * Math.Pow(2, Math.Sin(sumLong) / 2);
 
 
+                        b = a * Math.Tan(1)*2;
+                        //c = 2 * b;
+                    }
+                       
 
-                }
+                    }
+                
+               
             }
            
         }
