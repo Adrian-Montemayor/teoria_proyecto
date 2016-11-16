@@ -26,10 +26,17 @@ namespace CompressionMaps
         double LngInicial = -100.3161126;
 
         int contador = 1;
+        //Contador de puntos 
+        int contadorPunto = 0;
 
         int u = 2;
+        //ContadorDeClicks
+       static int ContadorDeClik;
+
 
         Dictionary<double, double> Diccionario_Cordenadas = new Dictionary<double, double>();
+        //Diccionario  De puntos
+        Dictionary<int, Dictionary<double, double>> Diccionario_Puntos = new Dictionary<int, Dictionary<double, double>>();   
 
         public Form1()
         {
@@ -114,6 +121,9 @@ namespace CompressionMaps
             // Se obtiene los datos de lat y lng del mapa donde el usuario presionó
             double lat = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lat;
             double lng = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lng;
+
+            ContadorDeClik++;
+
 
             //Agrego la latitud y longitud al diccionario
             Diccionario_Cordenadas.Add(lat, lng);
@@ -325,72 +335,39 @@ namespace CompressionMaps
             int count = 0;
             foreach (var item in Distancias)
             {
+                contadorPunto++;
                 LatIn = item.Key;
                 LonIn = item.Value;
 
+
+
                 foreach (var item2 in Distancias)
                 {
+
                     count++;
-                    if (count > 1)
+                    if (count > ContadorDeClik)
                     {
+                        count = 1;
+                    }
+                    
+                    MessageBox.Show("Distancia entre Punto " + contadorPunto + "y Punto " + count);
+                        
                         R1 = LatIn - item2.Key;
-                        MessageBox.Show("Resta Latitudes: " + R1);
                         R2 = LonIn - item2.Value;
-                        MessageBox.Show("Resta Longitudes: " + R2);
                         R1P = R1*R1;
-                        MessageBox.Show("Pow R1: " + R1P);
-                        R2P = R2*R2;
-                        MessageBox.Show("Pow R2: " + R2P);
+                        R2P = R2*R2; 
                         DistanciaEuclideana = Math.Pow(R1, 2) + Math.Pow(R2, 2);
-                        MessageBox.Show("Distancia E: " + DistanciaEuclideana);
                         KM = (Math.Sqrt(DistanciaEuclideana / 2)) * 157.4;
                         MessageBox.Show("Distancia Euclideana: "+ Math.Round(KM, 2) + "km");
-                    }
+
+                   
+
+                    
                 }
+               
             }
         }
 
-        public void DistanciaEnKm(Dictionary<double, double> Distancias)
-        {
-            Double RadianesInLt, Radianeslt;
-            Double RadianeslnLn,Radianesln;
-            Double SumLat,sumLong;
-            double a,b,c;
-            int count = 0;
-
-            foreach (var item in Distancias)
-            {
-                RadianesInLt = item.Key * (Math.PI / 180);
-                RadianeslnLn = item.Value * (Math.PI / 180);
-
-                 
-
-               
-                    foreach (var latlng in Distancias)
-                    {
-                    count++;
-                    if (count > 0)
-                    {
-                        Radianeslt = latlng.Key * (Math.PI / 180);
-                        Radianesln = latlng.Value * (Math.PI / 180);
-
-                        SumLat = Radianeslt - RadianesInLt;
-                        sumLong = Radianesln - RadianeslnLn;
-
-                        a = Math.Pow(2, Math.Sin(SumLat) / 2) + Math.Cos(RadianesInLt) * Math.Cos(Radianeslt) * Math.Pow(2, Math.Sin(sumLong) / 2);
-
-
-                        b = a * Math.Tan(1)*2;
-                        //c = 2 * b;
-                    }
-                       
-
-                    }
-                
-               
-            }
-           
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
