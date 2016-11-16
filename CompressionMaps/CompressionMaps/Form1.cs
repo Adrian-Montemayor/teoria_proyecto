@@ -111,12 +111,7 @@ namespace CompressionMaps
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             habRuta();
-            if (contador >= 11)
-            {
-                btn_Agregar.Enabled = false;
-                MessageBox.Show("El límite máximo de rutas es 10.");
-                return;
-            }
+          
 
             // Se obtiene los datos de lat y lng del mapa donde el usuario presionó
             double lat = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lat;
@@ -275,6 +270,8 @@ namespace CompressionMaps
             // Actualizar el mapa
             gMapControl1.Zoom = gMapControl1.Zoom + 1;
             gMapControl1.Zoom = gMapControl1.Zoom - 1;
+
+            DistanciaEuclideana(Diccionario_Cordenadas);
         }
 
         private void habRuta() {
@@ -290,11 +287,7 @@ namespace CompressionMaps
 
         private void desRuta()
         {
-            if (contador >= 11)
-            {
-                btn_Agregar.Enabled = false;
-                MessageBox.Show("El límite máximo de rutas es 10.");
-            }
+        
         }
 
         private void gMapControl1_OnRouteClick(GMapRoute item, MouseEventArgs e)
@@ -332,6 +325,8 @@ namespace CompressionMaps
             Double R2P;
             Double DistanciaEuclideana;
             Double KM;
+            string[] txt = new string[ContadorDeClik];
+           
             int count = 0;
             foreach (var item in Distancias)
             {
@@ -339,6 +334,7 @@ namespace CompressionMaps
                 LatIn = item.Key;
                 LonIn = item.Value;
 
+                TreeNode newNode = new TreeNode("Punto " + contadorPunto);
 
 
                 foreach (var item2 in Distancias)
@@ -349,30 +345,41 @@ namespace CompressionMaps
                     {
                         count = 1;
                     }
-                    
-                    MessageBox.Show("Distancia entre Punto " + contadorPunto + "y Punto " + count);
-                        
+
                         R1 = LatIn - item2.Key;
                         R2 = LonIn - item2.Value;
                         R1P = R1*R1;
                         R2P = R2*R2; 
                         DistanciaEuclideana = Math.Pow(R1, 2) + Math.Pow(R2, 2);
                         KM = (Math.Sqrt(DistanciaEuclideana / 2)) * 157.4;
-                        MessageBox.Show("Distancia Euclideana: "+ Math.Round(KM, 2) + "km");
+                        //MessageBox.Show("Distancia Euclideana: "+ Math.Round(KM, 2) + "km");
+                       dataGridView2.Rows.Add("Punto " + contadorPunto, "Punto " + count, Math.Round(KM, 2));
 
-                   
-
-                    
                 }
                
+
             }
+
+          
+
         }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
             //DistanciaEnKm(Diccionario_Cordenadas);
-            DistanciaEuclideana(Diccionario_Cordenadas);
+           
+            
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
