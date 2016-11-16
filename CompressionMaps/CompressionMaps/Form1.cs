@@ -315,27 +315,36 @@ namespace CompressionMaps
         public void DistanciaEuclideana(Dictionary<double,double> Distancias)
         {
             Double LatIn;
-            Double lonIn;
+            Double LonIn;
             Double R1;
             Double R2;
+            Double R1P;
+            Double R2P;
             Double DistanciaEuclideana;
             Double KM;
             int count = 0;
             foreach (var item in Distancias)
             {
                 LatIn = item.Key;
-                lonIn = item.Value;
+                LonIn = item.Value;
 
                 foreach (var item2 in Distancias)
                 {
                     count++;
                     if (count > 1)
                     {
-                        R1 = item2.Key - LatIn ;
-                        R2 = item2.Value - lonIn;
-                        DistanciaEuclideana = Math.Pow(2, R1) - Math.Pow(2, R2);
-                        KM = Math.Sqrt(DistanciaEuclideana / 2) * 157.4;
-                        MessageBox.Show("Distancia Euclideana: "+ KM);
+                        R1 = LatIn - item2.Key;
+                        MessageBox.Show("Resta Latitudes: " + R1);
+                        R2 = LonIn - item2.Value;
+                        MessageBox.Show("Resta Longitudes: " + R2);
+                        R1P = R1*R1;
+                        MessageBox.Show("Pow R1: " + R1P);
+                        R2P = R2*R2;
+                        MessageBox.Show("Pow R2: " + R2P);
+                        DistanciaEuclideana = Math.Pow(R1, 2) + Math.Pow(R2, 2);
+                        MessageBox.Show("Distancia E: " + DistanciaEuclideana);
+                        KM = (Math.Sqrt(DistanciaEuclideana / 2)) * 157.4;
+                        MessageBox.Show("Distancia Euclideana: "+ Math.Round(KM, 2) + "km");
                     }
                 }
             }
@@ -360,7 +369,7 @@ namespace CompressionMaps
                     foreach (var latlng in Distancias)
                     {
                     count++;
-                    if (count > 1)
+                    if (count > 0)
                     {
                         Radianeslt = latlng.Key * (Math.PI / 180);
                         Radianesln = latlng.Value * (Math.PI / 180);
@@ -385,7 +394,7 @@ namespace CompressionMaps
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DistanciaEnKm(Diccionario_Cordenadas);
+            //DistanciaEnKm(Diccionario_Cordenadas);
             DistanciaEuclideana(Diccionario_Cordenadas);
         }
     }

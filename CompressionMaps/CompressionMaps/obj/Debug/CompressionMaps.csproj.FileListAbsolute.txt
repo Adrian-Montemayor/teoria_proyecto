@@ -30,3 +30,19 @@ C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\Compressi
 C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.Form1.resources
 C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.Properties.Resources.resources
 C:\TeoriaGit\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.csproj.GenerateResource.Cache
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\CompressionMaps.exe.config
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.exe
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.pdb
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\CompressionMaps.exe
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\CompressionMaps.pdb
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\AjaxMin.dll
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\GMap.NET.Core.dll
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\Gmap.net.dll
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\GMap.NET.WindowsForms.dll
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\Gmap.net.pdb
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\GMap.NET.Core.xml
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\bin\Debug\GMap.NET.WindowsForms.xml
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.csprojResolveAssemblyReference.cache
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.Form1.resources
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.Properties.Resources.resources
+C:\Users\Daniel Arriaga\Documents\GitBash\teoria_proyecto\CompressionMaps\CompressionMaps\obj\Debug\CompressionMaps.csproj.GenerateResource.Cache
