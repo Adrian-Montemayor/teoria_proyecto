@@ -44,6 +44,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btn_RutaOptima = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +84,7 @@
             // 
             this.txt_des.Location = new System.Drawing.Point(622, 33);
             this.txt_des.Name = "txt_des";
-            this.txt_des.Size = new System.Drawing.Size(265, 20);
+            this.txt_des.Size = new System.Drawing.Size(356, 20);
             this.txt_des.TabIndex = 1;
             // 
             // label1
@@ -108,7 +109,7 @@
             // 
             this.txt_lat.Location = new System.Drawing.Point(622, 80);
             this.txt_lat.Name = "txt_lat";
-            this.txt_lat.Size = new System.Drawing.Size(265, 20);
+            this.txt_lat.Size = new System.Drawing.Size(356, 20);
             this.txt_lat.TabIndex = 3;
             // 
             // label3
@@ -124,7 +125,7 @@
             // 
             this.txt_lon.Location = new System.Drawing.Point(622, 128);
             this.txt_lon.Name = "txt_lon";
-            this.txt_lon.Size = new System.Drawing.Size(265, 20);
+            this.txt_lon.Size = new System.Drawing.Size(356, 20);
             this.txt_lon.TabIndex = 5;
             // 
             // dataGridView1
@@ -144,7 +145,7 @@
             // 
             this.btn_poligono.Location = new System.Drawing.Point(622, 154);
             this.btn_poligono.Name = "btn_poligono";
-            this.btn_poligono.Size = new System.Drawing.Size(136, 23);
+            this.btn_poligono.Size = new System.Drawing.Size(129, 23);
             this.btn_poligono.TabIndex = 10;
             this.btn_poligono.Text = "Polígono";
             this.btn_poligono.UseVisualStyleBackColor = true;
@@ -152,9 +153,9 @@
             // 
             // btn_Ruta
             // 
-            this.btn_Ruta.Location = new System.Drawing.Point(764, 154);
+            this.btn_Ruta.Location = new System.Drawing.Point(757, 154);
             this.btn_Ruta.Name = "btn_Ruta";
-            this.btn_Ruta.Size = new System.Drawing.Size(123, 23);
+            this.btn_Ruta.Size = new System.Drawing.Size(111, 23);
             this.btn_Ruta.TabIndex = 11;
             this.btn_Ruta.Text = "Ruta";
             this.btn_Ruta.UseVisualStyleBackColor = true;
@@ -198,11 +199,21 @@
             this.dataGridView2.Size = new System.Drawing.Size(356, 175);
             this.dataGridView2.TabIndex = 15;
             // 
+            // btn_RutaOptima
+            // 
+            this.btn_RutaOptima.Location = new System.Drawing.Point(874, 154);
+            this.btn_RutaOptima.Name = "btn_RutaOptima";
+            this.btn_RutaOptima.Size = new System.Drawing.Size(104, 23);
+            this.btn_RutaOptima.TabIndex = 16;
+            this.btn_RutaOptima.Text = "Ruta Optima";
+            this.btn_RutaOptima.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(990, 516);
+            this.Controls.Add(this.btn_RutaOptima);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.btn_Ruta);
             this.Controls.Add(this.btn_poligono);
@@ -241,6 +252,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btn_RutaOptima;
     }
 }
 

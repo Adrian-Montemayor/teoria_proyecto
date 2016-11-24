@@ -126,69 +126,79 @@ namespace CompressionMaps
             //Agrego la latitud y longitud al diccionario
             Diccionario_Cordenadas.Add(lat, lng);
 
-            //*****************************************************************************************
-            if(contador == 1) {
-                // Marcador
-                markerOverlay = new GMapOverlay("Marcador");
-                marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.green);
-                markerOverlay.Markers.Add(marker);
-
-                // Agregamos un tooltip de texto a los marcadores
-                //marker.ToolTipMode = MarkerTooltipMode.Always;
-                marker.ToolTipText = string.Format("Ubicación: \n Latitud: {0} \n Longitud {1}", lat, lng);
-
-                // Ahora agregamos el mapa y el marcador al map control
-                gMapControl1.Overlays.Add(markerOverlay);
-
-                // Insertando datos al dt para mostrar en la lista
-                dt.Rows.Add("Ubicación 1", lat, lng);
-                dataGridView1.DataSource = dt;
-
-                // Desactivar las columnas de lat y long
-                dataGridView1.Columns[1].Visible = false;
-                dataGridView1.Columns[2].Visible = false;
-
-                // Actualizar el mapa
-                gMapControl1.Zoom = gMapControl1.Zoom + 1;
-                gMapControl1.Zoom = gMapControl1.Zoom - 1;
-            }
-
-            //*****************************************************************************************
-
-            if(contador >= 2) {
-                // Se posicionan en el txt de la latitud y longitud
-                //txt_lat.Text = lat.ToString();
-                //txt_lon.Text = lng.ToString();
-
-                // Dejamos agregado el marcador
-                marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.blue);
-                markerOverlay.Markers.Add(marker);
-                //marker.ToolTipMode = MarkerTooltipMode.Always;
-
-                // Creamos el marcador para moverlo al lugar indicado
-                //marker.Position = new PointLatLng(lat, lng);
-
-                // Agregamos datos al DataGrid
-                // Si no tiene algo escrito
-                if (txt_des.Text.Equals(""))
+            
+            if(ContadorDeClik <= 10) {
+                //*****************************************************************************************
+                if (contador == 1)
                 {
-                    dt.Rows.Add("Ubicación " + u, lat.ToString(), lng.ToString());
-                    u++;
-                    //habRuta();
-                }
-                // Si tiene algo escrito
-                else
-                {
-                    dt.Rows.Add(txt_des.Text, lat.ToString(), lng.ToString());
-                    txt_des.Text = "";
-                    u++;
-                    //habRuta();
+                    // Marcador
+                    markerOverlay = new GMapOverlay("Marcador");
+                    marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.green);
+                    markerOverlay.Markers.Add(marker);
+
+                    // Agregamos un tooltip de texto a los marcadores
+                    //marker.ToolTipMode = MarkerTooltipMode.Always;
+                    marker.ToolTipText = string.Format("Ubicación: \n Latitud: {0} \n Longitud {1}", lat, lng);
+
+                    // Ahora agregamos el mapa y el marcador al map control
+                    gMapControl1.Overlays.Add(markerOverlay);
+
+                    // Insertando datos al dt para mostrar en la lista
+                    dt.Rows.Add("Ubicación 1", lat, lng);
+                    dataGridView1.DataSource = dt;
+
+                    // Desactivar las columnas de lat y long
+                    dataGridView1.Columns[1].Visible = false;
+                    dataGridView1.Columns[2].Visible = false;
+
+                    // Actualizar el mapa
+                    gMapControl1.Zoom = gMapControl1.Zoom + 1;
+                    gMapControl1.Zoom = gMapControl1.Zoom - 1;
                 }
 
-                // También se agrega el mensaje al marcador(tooltip)
-                marker.ToolTipText = string.Format("Ubicación: \n Latitud: {0} \n Longitud: {1}", lat, lng);
+                //*****************************************************************************************
+
+                if (contador >= 2)
+                {
+                    // Se posicionan en el txt de la latitud y longitud
+                    //txt_lat.Text = lat.ToString();
+                    //txt_lon.Text = lng.ToString();
+
+                    // Dejamos agregado el marcador
+                    marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.blue);
+                    markerOverlay.Markers.Add(marker);
+                    //marker.ToolTipMode = MarkerTooltipMode.Always;
+
+                    // Creamos el marcador para moverlo al lugar indicado
+                    //marker.Position = new PointLatLng(lat, lng);
+
+                    // Agregamos datos al DataGrid
+                    // Si no tiene algo escrito
+                    if (txt_des.Text.Equals(""))
+                    {
+                        dt.Rows.Add("Ubicación " + u, lat.ToString(), lng.ToString());
+                        u++;
+                        //habRuta();
+                    }
+                    // Si tiene algo escrito
+                    else
+                    {
+                        dt.Rows.Add(txt_des.Text, lat.ToString(), lng.ToString());
+                        txt_des.Text = "";
+                        u++;
+                        //habRuta();
+                    }
+
+                    // También se agrega el mensaje al marcador(tooltip)
+                    marker.ToolTipText = string.Format("Ubicación: \n Latitud: {0} \n Longitud: {1}", lat, lng);
+                }
+                contador++;
             }
-            contador++;
+            else {
+                MessageBox.Show("El máximo de marcadores es 10");
+                ContadorDeClik--;
+                return;
+            }
         }
 
         private void btn_Agregar_Click(object sender, EventArgs e)
@@ -275,10 +285,11 @@ namespace CompressionMaps
             gMapControl1.Zoom = gMapControl1.Zoom - 1;
 
             DistanciaEuclideana(Diccionario_Cordenadas);
+            btn_Ruta.Enabled = false;
         }
 
         private void habRuta() {
-            if(contador >= 3) {
+            if(contador >= 4) {
                 btn_poligono.Enabled = true;
                 btn_Ruta.Enabled = true;
             }
@@ -364,7 +375,6 @@ namespace CompressionMaps
                             if (arreglo[c] < arreglo[c - 1])
                             {
                                 // Recuperamos los datos de grid y los asignamos a los textbox
-                                MessageBox.Show("C: " + (c - 1));
                                 txt_des.Text = dataGridView1.Rows[c - 1].Cells[0].Value.ToString();
                                 txt_lat.Text = dataGridView1.Rows[c - 1].Cells[1].Value.ToString();
                                 txt_lon.Text = dataGridView1.Rows[c - 1].Cells[2].Value.ToString();
@@ -384,7 +394,6 @@ namespace CompressionMaps
                             else
                             {
                                 // Recuperamos los datos de grid y los asignamos a los textbox
-                                MessageBox.Show("C: " + c);
                                 txt_des.Text = dataGridView1.Rows[c].Cells[0].Value.ToString();
                                 txt_lat.Text = dataGridView1.Rows[c].Cells[1].Value.ToString();
                                 txt_lon.Text = dataGridView1.Rows[c].Cells[2].Value.ToString();
