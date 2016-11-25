@@ -31,9 +31,12 @@ namespace CompressionMaps
 
         int u = 2;
         //ContadorDeClicks
-       static int ContadorDeClik;
+        static int ContadorDeClik;
+        static int ContadorRuta = 0;
+        static int ContadorDouglas = 0;
 
         static int c = 1;
+        static int[] BanderaNumero = new int[100];
         static double[] arreglo = new double[100];
 
 
@@ -113,6 +116,22 @@ namespace CompressionMaps
 
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            if(ContadorRuta == 1) {
+                if(btn_Ruta.Enabled == false) {
+                    MessageBox.Show("No se puede agregar más puntos");
+                    return;
+                }
+            }
+
+            if (ContadorDouglas == 1)
+            {
+                if (btn_Douglas.Enabled == false)
+                {
+                    MessageBox.Show("No se puede agregar más puntos");
+                    return;
+                }
+            }
+
             habRuta();
           
 
@@ -286,16 +305,19 @@ namespace CompressionMaps
 
             DistanciaEuclideana(Diccionario_Cordenadas);
             btn_Ruta.Enabled = false;
+            btn_Douglas.Enabled = true;
+            ContadorRuta++;
         }
 
         private void habRuta() {
-            if(contador >= 4) {
+            if (contador >= 4) {
                 btn_poligono.Enabled = true;
                 btn_Ruta.Enabled = true;
             }
             else {
                 btn_poligono.Enabled = false;
                 btn_Ruta.Enabled = false;
+                btn_Douglas.Enabled = false;
             }
         }
 
@@ -369,52 +391,52 @@ namespace CompressionMaps
                         //MessageBox.Show("Distancia Euclideana: "+ Math.Round(KM, 2) + "km");
                        dataGridView2.Rows.Add("Punto " + contadorPunto, "Punto " + count, Math.Round(KM, 2));
                     arreglo[c] = KM;
-                    if (ContadorDeClik > c) {
-                        if (c > 1)
-                        {
-                            if (arreglo[c] < arreglo[c - 1])
-                            {
-                                // Recuperamos los datos de grid y los asignamos a los textbox
-                                txt_des.Text = dataGridView1.Rows[c - 1].Cells[0].Value.ToString();
-                                txt_lat.Text = dataGridView1.Rows[c - 1].Cells[1].Value.ToString();
-                                txt_lon.Text = dataGridView1.Rows[c - 1].Cells[2].Value.ToString();
+                    //if (ContadorDeClik > c) {
+                    //    if (c > 1)
+                    //    {
+                    //        if (arreglo[c] < arreglo[c - 1])
+                    //        {
+                    //            // Recuperamos los datos de grid y los asignamos a los textbox
+                    //            txt_des.Text = dataGridView1.Rows[c - 1].Cells[0].Value.ToString();
+                    //            txt_lat.Text = dataGridView1.Rows[c - 1].Cells[1].Value.ToString();
+                    //            txt_lon.Text = dataGridView1.Rows[c - 1].Cells[2].Value.ToString();
 
-                                double lat = Convert.ToDouble(txt_lat.Text);
-                                double lng = Convert.ToDouble(txt_lon.Text);
-                                GMarkerGoogle marker4;
-                                marker4 = new GMarkerGoogle(new PointLatLng(LatInicial, LngInicial), GMarkerGoogleType.yellow);
-                                markerOverlay.Markers.Add(marker4);
-                                marker4.Position = new PointLatLng(Convert.ToDouble(txt_lat.Text), Convert.ToDouble(txt_lon.Text));
-                                //marker3.ToolTipMode = MarkerTooltipMode.Always;
-                                marker4.ToolTipText = string.Format("Ubicación: \n Latitud: {0} \n Longitud: {1}", txt_lat.Text, txt_lon.Text);
+                    //            double lat = Convert.ToDouble(txt_lat.Text);
+                    //            double lng = Convert.ToDouble(txt_lon.Text);
+                    //            GMarkerGoogle marker4;
+                    //            marker4 = new GMarkerGoogle(new PointLatLng(LatInicial, LngInicial), GMarkerGoogleType.yellow);
+                    //            markerOverlay.Markers.Add(marker4);
+                    //            marker4.Position = new PointLatLng(Convert.ToDouble(txt_lat.Text), Convert.ToDouble(txt_lon.Text));
+                    //            //marker3.ToolTipMode = MarkerTooltipMode.Always;
+                    //            marker4.ToolTipText = string.Format("Ubicación: \n Latitud: {0} \n Longitud: {1}", txt_lat.Text, txt_lon.Text);
 
-                                // Se asignan los valores del grid al marcador
-                                marker.Position = new PointLatLng(lat, lng);
-                            }
-                            else
-                            {
-                                // Recuperamos los datos de grid y los asignamos a los textbox
-                                txt_des.Text = dataGridView1.Rows[c].Cells[0].Value.ToString();
-                                txt_lat.Text = dataGridView1.Rows[c].Cells[1].Value.ToString();
-                                txt_lon.Text = dataGridView1.Rows[c].Cells[2].Value.ToString();
+                    //            // Se asignan los valores del grid al marcador
+                    //            marker.Position = new PointLatLng(lat, lng);
+                    //        }
+                    //        else
+                    //        {
+                    //            // Recuperamos los datos de grid y los asignamos a los textbox
+                    //            txt_des.Text = dataGridView1.Rows[c].Cells[0].Value.ToString();
+                    //            txt_lat.Text = dataGridView1.Rows[c].Cells[1].Value.ToString();
+                    //            txt_lon.Text = dataGridView1.Rows[c].Cells[2].Value.ToString();
 
-                                double lat = Convert.ToDouble(txt_lat.Text);
-                                double lng = Convert.ToDouble(txt_lon.Text);
-                                GMarkerGoogle marker4;
-                                marker4 = new GMarkerGoogle(new PointLatLng(LatInicial, LngInicial), GMarkerGoogleType.yellow);
-                                markerOverlay.Markers.Add(marker4);
-                                marker4.Position = new PointLatLng(Convert.ToDouble(txt_lat.Text), Convert.ToDouble(txt_lon.Text));
-                                //marker3.ToolTipMode = MarkerTooltipMode.Always;
-                                marker4.ToolTipText = string.Format("Ubicación: \n Latitud: {0} \n Longitud: {1}", txt_lat.Text, txt_lon.Text);
+                    //            double lat = Convert.ToDouble(txt_lat.Text);
+                    //            double lng = Convert.ToDouble(txt_lon.Text);
+                    //            GMarkerGoogle marker4;
+                    //            marker4 = new GMarkerGoogle(new PointLatLng(LatInicial, LngInicial), GMarkerGoogleType.yellow);
+                    //            markerOverlay.Markers.Add(marker4);
+                    //            marker4.Position = new PointLatLng(Convert.ToDouble(txt_lat.Text), Convert.ToDouble(txt_lon.Text));
+                    //            //marker3.ToolTipMode = MarkerTooltipMode.Always;
+                    //            marker4.ToolTipText = string.Format("Ubicación: \n Latitud: {0} \n Longitud: {1}", txt_lat.Text, txt_lon.Text);
 
-                                // Se asignan los valores del grid al marcador
-                                marker.Position = new PointLatLng(lat, lng);
-                            }
-                            //double resta = arreglo[c] - arreglo[c-1];
-                            //MessageBox.Show("Resta: " + resta);
-                        }
-                        c++;
-                    }
+                    //            // Se asignan los valores del grid al marcador
+                    //            marker.Position = new PointLatLng(lat, lng);
+                    //        }
+                    //        //double resta = arreglo[c] - arreglo[c-1];
+                    //        //MessageBox.Show("Resta: " + resta);
+                    //    }
+                    //    c++;
+                    //}
                     
 
                 }
@@ -442,6 +464,92 @@ namespace CompressionMaps
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            for (int i = 1; i <= ContadorDeClik; i++)
+            {
+                BanderaNumero[i] = i;
+            }
+            GMapOverlay Ruta = new GMapOverlay("Rutas");
+            List<PointLatLng> puntos = new List<PointLatLng>();
+            foreach (var item in BanderaNumero)
+            {
+                if ((item % 2) != 0)
+                {
+                    int NumerosImpares = item;
+                    txt_des.Text = dataGridView1.Rows[item-1].Cells[0].Value.ToString();
+                    txt_lat.Text = dataGridView1.Rows[item-1].Cells[1].Value.ToString();
+                    txt_lon.Text = dataGridView1.Rows[item-1].Cells[2].Value.ToString();
+
+                    double lat = Convert.ToDouble(txt_lat.Text);
+                    double lng = Convert.ToDouble(txt_lon.Text);
+                    GMarkerGoogle marker3;
+                    marker3 = new GMarkerGoogle(new PointLatLng(LatInicial, LngInicial), GMarkerGoogleType.red);
+                    //markerOverlay.Markers.Add(marker3);
+                    //marker3.Position = new PointLatLng(Convert.ToDouble(txt_lat.Text), Convert.ToDouble(txt_lon.Text));
+                    ////marker3.ToolTipMode = MarkerTooltipMode.Always;
+                    //marker3.ToolTipText = string.Format("Ubicación: \n Latitud: {0} \n Longitud: {1}", txt_lat.Text, txt_lon.Text);
+
+                    //// Se asignan los valores del grid al marcador
+                    //marker.Position = new PointLatLng(lat, lng);
+
+                    // Se posiciona el foco del mapa en ese punto
+                    //gMapControl1.Position = marker.Position;
+
+                   
+
+                    // Variables para almacenar los datos. 
+                    //double lng, lat;
+
+                    // Agarramos los datos del grid
+            
+                    puntos.Add(new PointLatLng(lat, lng));
+                }
+
+                if (item == ContadorDeClik)
+                {
+                    int NumerosImpares = item;
+                    txt_des.Text = dataGridView1.Rows[item - 1].Cells[0].Value.ToString();
+                    txt_lat.Text = dataGridView1.Rows[item - 1].Cells[1].Value.ToString();
+                    txt_lon.Text = dataGridView1.Rows[item - 1].Cells[2].Value.ToString();
+
+                    double lat = Convert.ToDouble(txt_lat.Text);
+                    double lng = Convert.ToDouble(txt_lon.Text);
+                    GMarkerGoogle marker3;
+                    marker3 = new GMarkerGoogle(new PointLatLng(LatInicial, LngInicial), GMarkerGoogleType.red);
+                    //markerOverlay.Markers.Add(marker3);
+                    //marker3.Position = new PointLatLng(Convert.ToDouble(txt_lat.Text), Convert.ToDouble(txt_lon.Text));
+                    ////marker3.ToolTipMode = MarkerTooltipMode.Always;
+                    //marker3.ToolTipText = string.Format("Ubicación: \n Latitud: {0} \n Longitud: {1}", txt_lat.Text, txt_lon.Text);
+
+                    //// Se asignan los valores del grid al marcador
+                    //marker.Position = new PointLatLng(lat, lng);
+
+                    // Se posiciona el foco del mapa en ese punto
+                    //gMapControl1.Position = marker.Position;
+
+
+
+                    // Variables para almacenar los datos. 
+                    //double lng, lat;
+
+                    // Agarramos los datos del grid
+
+                    puntos.Add(new PointLatLng(lat, lng));
+                }
+
+                GMapRoute rutaPuntos = new GMapRoute(puntos, "Ruta");
+                Ruta.Routes.Add(rutaPuntos);
+                rutaPuntos.Stroke = new Pen(Color.Green,3);
+                gMapControl1.Overlays.Add(Ruta);
+
+                // Actualizar el mapa
+
+                ContadorDouglas++;
+                btn_Douglas.Enabled = false;
+            }
         }
     }
 }
